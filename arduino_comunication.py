@@ -24,4 +24,4 @@ class Com_comunication():
 com_comunication = Com_comunication('COM3', 9600)
 com_comunication.get_data()
 # Prefix 'b' converted data to bytes
-com_comunication.set_data(b'10')
+com_comunication.set_data(b'5')
