@@ -7,21 +7,25 @@ class Com_comunication():
 
     def get_data(self):
         read_data = serial.Serial(self.name, self.speed)
-        # If you to continue file 'output_from_', not to rewrite it, then you must to change 'w' to 'a'
+        # If you want to continue file 'output_from_', not to rewrite it, then you must change 'w' to 'a'
         file_com = open('output_from_' + str(self.name) +'.txt', 'w')
-        i = 0
+        file_com.write('Data from ' + str(self.name) + '\n')
+        file_com.close()
         while True:
             data_sensor = str(read_data.readline())
-            print(i, data_sensor)
+            print(data_sensor)
+            file_com = open('output_from_' + str(self.name) + '.txt', 'a')
             file_com.write(data_sensor + '\n')
-            i += 1
-        file_com.close()
+            file_com.close()
 
     def set_data(self, data):
         write_data = serial.Serial(self.name, self.speed)
         write_data.write(data)
 
+def inner_function()
+
 com_comunication = Com_comunication('COM3', 9600)
 com_comunication.get_data()
 # Prefix 'b' converted data to bytes
 com_comunication.set_data(b'5')
+
