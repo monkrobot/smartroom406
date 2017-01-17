@@ -10,8 +10,8 @@ class Com_comunication():
 
     #function for read data from com-port
     def get_data(self, inner_function, connection_with_user):
-        read_data = serial.Serial(self.name, self.speed)
-        inner_function(self.name, read_data, connection_with_user)
+
+        inner_function(self.name, self.speed, connection_with_user)
 
     #function for writing data to com-port
     def set_data(self, data):
@@ -19,10 +19,11 @@ class Com_comunication():
         write_data.write(data)
 
 # inner-function for function get-data in class com_comunication
-def print_function(name, read_data, command_for_get_data):
+def print_function(name, speed, command_for_get_data):
     #command_for_get_data - data from function command_for_get_data
     #in file connection_with_user.py
     data_from_command_for_get_data = command_for_get_data()
+    read_data = serial.Serial(name, speed)
     if data_from_command_for_get_data[0] == '1' or data_from_command_for_get_data[0] == '3':
         # If you want to continue file 'output_from_', not to rewrite it, then you must change 'w' to 'a'
         file_com = open(data_from_command_for_get_data[1] + str(name) + '.txt', 'w')
