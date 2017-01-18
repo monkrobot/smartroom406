@@ -11,7 +11,8 @@ class Com_comunication():
     #function for read data from com-port
     def get_data(self, inner_function, connection_with_user):
 
-        inner_function(self.name, self.speed, connection_with_user)
+        n = inner_function(self.name, self.speed, connection_with_user)
+        return(n)
 
     #function for writing data to com-port
     def set_data(self, data):
@@ -38,18 +39,31 @@ def print_function(name, speed, command_for_get_data):
         else:
             while True:
                 data_sensor = str(read_data.readline())
+                if len(data_sensor) < 30:
+                    continue
+                else:
+                    # print(data_sensor)
+                    data = str(data_sensor)
+                    # print(m)
+                    return (data)
                 file_com = open(data_from_command_for_get_data[1] + str(name) + '.txt', 'a')
                 file_com.write(data_sensor + '\n')
                 file_com.close()
     elif data_from_command_for_get_data[0] == '2':
         while True:
             data_sensor = str(read_data.readline())
-            print(data_sensor)
+            if len(data_sensor) < 30:
+                continue
+            else:
+                #print(data_sensor)
+                data = str(data_sensor)
+                print(data)
+                return(data)
     else:
         print('Error')
 
-com_comunication = Com_comunication('COM3', 9600)
-com_comunication.get_data(print_function, connection_with_user.command_for_get_data)
+#com_comunication = Com_comunication('COM3', 9600)
+#com_comunication.get_data(print_function, connection_with_user.command_for_get_data)
 
 ## Prefix 'b' converted data to bytes
 #com_comunication.set_data(b'5')

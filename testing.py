@@ -1,9 +1,11 @@
-import devices_modules
+def test_function():
+    result = 5+9
+    print('Test function: ', result)
+    print(bytes(14))
+    return(bytes(result))
 
-class Devices():
-    def processing_data(self, information):
-        #information = input('Enter name of function: ')
-        exec_function = getattr(devices_modules, information)
-        exec_function()
-a = Devices()
-a.processing_data('mpu92_65')
+def testing(test_function):
+    result = test_function()
+    print(result)
+
+testing(test_function)
