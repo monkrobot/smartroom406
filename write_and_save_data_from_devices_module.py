@@ -17,10 +17,9 @@ def print_function(name, command_for_get_data, data):
             file_com.write(data + '\n')
             file_com.close()
         else:
-                print(data)
-                file_com = open(data_from_command_for_get_data[1] + str(name) + '.txt', 'a')
-                file_com.write(data + '\n')
-                file_com.close()
+            file_com = open(data_from_command_for_get_data[1] + str(name) + '.txt', 'a')
+            file_com.write(data + '\n')
+            file_com.close()
     elif data_from_command_for_get_data[0] == '2':
         print(data)
     else:

@@ -12,16 +12,16 @@ def mpu92_65(data_sensor):
     angle_z = 0
     Filter_gain = 0.05
 
-    n=0
+    #n=0
 
     #while True:
     start = time.time()
     #    #print('thie is start:' + str(start))
     #    data_sensor = str(ser.readline())
 #
-    print(data_sensor)
+    #print(data_sensor)
     data_sensor_modify = re.findall("[-0-9.]+", data_sensor)
-    print('data_sensor_modify: ' + str(data_sensor_modify))
+    #print('data_sensor_modify: ' + str(data_sensor_modify))
     #if data_sensor_modify == [] or len(data_sensor_modify) != 9:
     #    #continue
     #else:
@@ -87,17 +87,8 @@ def mpu92_65(data_sensor):
         return math.degrees(radians)
     GyX_angle = (data_gyro_massive[0] * (integrate_time) + angle_x)
     result123 = heading(get_calibrated, Ax=0, Ay=0)
-    print("Angle " + str(n) + ":")
-    print("Angle X: " + str(angle_x))
-    print("Angle Y: " + str(angle_y))
-    print("Angle Z accel + gyro: " + str(angle_z))
-    print("Angle Z mag: " + str(result123))
-    print(" ")
 
     #return("Angle " + str(n) + ":")
-    return("Angle X: " + str(angle_x))
-    return("Angle Y: " + str(angle_y))
-    return("Angle Z accel + gyro: " + str(angle_z))
-    return("Angle Z mag: " + str(result123))
-    return(" ")
+    return("Angle X: " + str(angle_x) + "\n"+"Angle Y: " + str(angle_y) + "\n"+"Angle Z accel + gyro: " + str(angle_z)
+           + "\n"+"Angle Z mag: " + str(result123))
     n += 1
