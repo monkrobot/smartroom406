@@ -21,7 +21,7 @@ class Com_comunication():
             if len(data_sensor) < 30:
                 continue
             else:
-                print("This is read data" + str(data_sensor))
+                #print("This is read data" + str(data_sensor))
                 n = inner_function(self.name, connection_with_user, data_sensor)
                 return(data_sensor)
         #n = inner_function(self.name, connection_with_user, read_data)
