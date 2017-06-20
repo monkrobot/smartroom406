@@ -4,6 +4,7 @@ import re
 import numpy as np
 import math
 
+
 def mpu92_65(data_sensor):
     #ser = serial.Serial('COM3', 9600)
 
