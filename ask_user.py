@@ -4,7 +4,7 @@
 class ConnectionWithUser:
     '''
     This class asks user to print data to console or to save it
-    devices.py class Devices - child
+    main.py class Devices - child
     '''
 
     @staticmethod

@@ -18,10 +18,10 @@ class ComCommunication:
         read_data = serial.Serial(self.name, self.speed)
         while True:
             data_sensor = str(read_data.readline())
-            if len(data_sensor) < 30:
+            if len(data_sensor) < 10:
                 continue
             else:
-                print("This is read data" + str(data_sensor))
+                print("This is read data: " + str(data_sensor))
                 # - n = self.print_function(self.name, self.command_for_get_data, data_sensor)
                 return data_sensor
 

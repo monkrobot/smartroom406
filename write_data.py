@@ -4,7 +4,7 @@
 class WriteAndSaveData:
     '''
     Writing data to console or save it in file
-    devices.py class Devices - child
+    main.py class Devices - child
     '''
 
     @staticmethod
