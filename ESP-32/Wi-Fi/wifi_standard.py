@@ -22,7 +22,7 @@ class Device(WifiStandard):
         self.prot = wifi_prots[prot]
         super().__init__(self.prot["maxSpeed"], wifi_prots[prot]["freq"], wifi_prots[prot]["signal"])
 
-
-device = Device('prot802_11b')
-print('Device wifi protocol: ', device.prot)
-print("speed: ", device.maxSpeed)
+if __name__ == "__main__":
+    device = Device('prot802_11b')
+    print('Device wifi protocol: ', device.prot)
+    print("speed: ", device.maxSpeed)
