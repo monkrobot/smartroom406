@@ -39,10 +39,8 @@ length = [-3, 3]
 width = [-1.5,1.5]
 height = [-2,2]
 #cube = [[0,0,length,length,0,0,length,length],[0,width,0,width,0,width,0,width],[0,0,0,0,height,height,height,height]]
-##cube = [[0,0,0],[0,width,0],[length,0,0],[length,width,0],[0,0,height],[0,width,height],
-##        [length,0,height],[length,width,height]]
-#
-#ax.plot3D(cube[0],cube[1],cube[2], color="b")
+#cube = [[0,0,0],[0,width,0],[length,0,0],[length,width,0],[0,0,height],[0,width,height],
+#        [length,0,height],[length,width,height]]
 
 #for len,wid in combinations(np.array(list(product(length,width,height))),2):
 #    if np.sum(np.abs(len - wid)) != 0:
