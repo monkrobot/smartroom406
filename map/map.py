@@ -12,14 +12,16 @@ class Room:
     def drawingRoom(self):
         fig2 = plt.figure()
         ax2 = fig2.add_subplot(111, aspect='equal')
+        #Drawing rectangle-room
         ax2.add_patch(
             patches.Rectangle(
-                (0.1, 0.1),
+                (0.1, 0.1), #coordinates of left-bottom point
                 self.width,
                 self.long,
                 fill=False  # remove background
             )
         )
+        #Drawing circle-wifi zone
         ax2.add_patch(
             patches.Circle(
                 (self.points),
@@ -28,6 +30,7 @@ class Room:
                 fill=False
             )
         )
+        #Drawing circle-point of wifi router
         ax2.add_patch(
             patches.Circle(
                 (self.points),
