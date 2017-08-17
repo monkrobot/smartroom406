@@ -1,5 +1,10 @@
 import math
 
+#radius of wifi signal
+type= {"route": [0.5], "esp": [0.1]}
+
+
+
 class Device:
     '''Class for devices: router and esp-32'''
     def __init__(self, position=[0,0], radius=0.1):
@@ -12,6 +17,9 @@ dev2 = Device([1,3],2)
 dev3 = Device([1,1], 4)
 
 devices = [dev,dev2,dev3]
+
+
+
 
 #function for calculation radius and distance between two wifi points
 def calcWifiDist():
