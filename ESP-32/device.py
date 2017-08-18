@@ -1,7 +1,7 @@
 import math
 
 #radius of wifi signal
-type= {"route": [0.5], "esp": [0.1]}
+type= {"router": [0.5], "esp": [0.1]}
 
 
 
