@@ -21,11 +21,17 @@ class Map(QWidget):
         painter = QPainter(self._im)
         painter.setPen(QPen(QColor(Map.elClr), 1, Qt.SolidLine, Qt.RoundCap))
         painter.setBrush(QBrush(QColor(Map.elClr), Qt.CrossPattern))
-        painter.drawEllipse(event.pos(), Map.elHght, Map.elWdth)
-        painter.drawEllipse(event.pos(), Map.elCntH, Map.elCntW)
 
-        print("Event position is:", event.pos())
+        point = event.pos()
+        painter.drawEllipse(point, Map.elHght, Map.elWdth)
+        painter.drawEllipse(point, Map.elCntH, Map.elCntW)
 
+        #совместить с device.py
+        pointPressX = point.x()
+        pointPressY = point.y()
+        print("Event position is:", point)
+        print("X is", pointPressX)
+        print("Y is", pointPressY)
 
         # Перерисуемся
         self.update()
