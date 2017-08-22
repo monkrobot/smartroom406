@@ -1,8 +1,0 @@
-{
-  "prot802_11" : {"maxSpeed": 2, "freq": [2.4], "signal": ["FHSS", "DSSS"]},
-  "prot802_11a" : {"maxSpeed": 54, "freq": [5], "signal": ["OFDM"]},
-  "prot802_11b" : {"maxSpeed": 11, "freq": [2.4], "signal": ["HR-DSSS"]},
-  "prot802_11g" : {"maxSpeed": 54, "freq": [2.4], "signal": ["OFDM"]},
-  "prot802_11n" : {"maxSpeed": 600, "freq": [2.4, 5], "signal": ["OFDM"]},
-  "prot802_11ac" : {"maxSpeed": 1300, "freq": [5], "signal": ["256-QAM"]}
-}

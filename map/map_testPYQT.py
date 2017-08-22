@@ -1,3 +1,5 @@
+from ESP32 import device
+
 import sys
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QWidget, QToolTip, QPushButton, QApplication, QTextEdit,
                              QLineEdit, QGridLayout, QMessageBox, QLabel, QFrame, QColorDialog, QFileDialog)
@@ -12,10 +14,12 @@ class Map(QWidget):
 
 
 
-    elHght, elWdth = 0, 0
-    elCntH, elCntW = 0, 0
+    elHght, elWdth = 0, 0 #Mouse click WiFi zone
+    elCntH, elCntW = 0, 0 #Mouse click WiFi zone center
+    clickNum = 0 #Number of mouse click for device
+    devList = [] #Device list
     elClr = "#000000"
-    print("elClr", elClr)
+
     def mousePressEvent(self, event):
 
         painter = QPainter(self._im)
@@ -26,12 +30,27 @@ class Map(QWidget):
         painter.drawEllipse(point, Map.elHght, Map.elWdth)
         painter.drawEllipse(point, Map.elCntH, Map.elCntW)
 
-        #совместить с device.py
-        pointPressX = point.x()
-        pointPressY = point.y()
-        print("Event position is:", point)
-        print("X is", pointPressX)
-        print("Y is", pointPressY)
+        if Map.elHght >= 200:
+            print("ClickNum:", Map.clickNum)
+
+            #Mouse click coordinates
+            pointPressX = point.x()
+            pointPressY = point.y()
+            print("X is", pointPressX)
+            print("Y is", pointPressY)
+
+            #New device
+            dev = device.Device([pointPressX, pointPressY], Map.elHght)
+
+            #Device list
+            Map.devList.append(dev)
+            print("Map.devList", Map.devList)
+
+            Map.clickNum += 1
+            #if Map.clickNum >= 1:
+            #    device.calcWifiDist(Map.devList)
+
+
 
         # Перерисуемся
         self.update()
@@ -55,9 +74,15 @@ class Map(QWidget):
         btnStp = QPushButton("Stop", self)
         btnStp.move(290, 50)
 
+
+        btnShwInts = QPushButton("Result", self)
+        #btnShwInts = btnStp = QPushButton("Result", self) #when click button, 2 buttons work (stop and Result)
+        btnShwInts.move(420, 50)
+
         btnRout.clicked.connect(self.btnRoutnClicked)
         btnESP.clicked.connect(self.btnESPClicked)
         btnStp.clicked.connect(self.btnStopClicked)
+        btnShwInts.clicked.connect(self.btnShwIntsClicked)
 
         #Size and color for drawing zone
         self._im = QImage(1700, 960, QImage.Format_ARGB32)
@@ -81,8 +106,7 @@ class Map(QWidget):
         '''
         Map.elHght, Map.elWdth = 300, 300
         Map.elCntH, Map.elCntW = 20, 20
-        Map.elClr = "#431292" #"#684519"
-        print("elClr", Map.elClr)
+        Map.elClr = "#431292"
         print("Button Router pressed")
 
     def btnESPClicked(self):
@@ -93,7 +117,6 @@ class Map(QWidget):
         Map.elHght, Map.elWdth = 200, 200
         Map.elCntH, Map.elCntW = 10, 10
         Map.elClr = "#439232"
-        print("elClr", Map.elClr)
         print("Button ESP-32 pressed")
 
     def btnStopClicked(self):
@@ -103,9 +126,13 @@ class Map(QWidget):
         '''
         Map.elHght, Map.elWdth = 0, 0
         Map.elCntH, Map.elCntW = 0, 0
-        print("elClr", Map.elClr)
         print("Button Stop pressed")
+        print("Fuck you!")
 
+    def btnShwIntsClicked(self):
+        print("Button Show intersections pressed")
+        if Map.clickNum >= 1:
+            device.calcWifiDist(Map.devList)
 
 if __name__ == '__main__':
 
