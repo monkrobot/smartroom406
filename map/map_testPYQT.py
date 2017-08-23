@@ -22,15 +22,21 @@ class Map(QWidget):
 
     def mousePressEvent(self, event):
 
+        point = event.pos()
+
         painter = QPainter(self._im)
-        painter.setPen(QPen(QColor(Map.elClr), 1, Qt.SolidLine, Qt.RoundCap))
+        painter.setPen(QPen(QColor(Map.elClr), 2, Qt.SolidLine, Qt.RoundCap))
         painter.setBrush(QBrush(QColor(Map.elClr), Qt.CrossPattern))
 
-        point = event.pos()
         painter.drawEllipse(point, Map.elHght, Map.elWdth)
         painter.drawEllipse(point, Map.elCntH, Map.elCntW)
 
         if Map.elHght >= 200:
+
+            painter.setPen(QPen(QColor("#000000")))
+            painter.setFont(QFont('Arial', 15))
+            painter.drawText(point, str(Map.clickNum + 1))
+
             print("ClickNum:", Map.clickNum)
 
             #Mouse click coordinates
