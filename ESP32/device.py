@@ -12,6 +12,7 @@ class Device:
         self.radius = radius
 
 #Devices
+#wifirad =
 dev = Device([0,0],3)
 dev2 = Device([1,3],2)
 dev3 = Device([1,1], 4)
@@ -25,6 +26,7 @@ print('devices', devices)
 def calcWifiDist(devices):
     for i in range(len(devices)):
         intersecList = []
+        #intersecDic = {}
         for j in range(len(devices)):
             if j == i:
                 continue
@@ -34,9 +36,11 @@ def calcWifiDist(devices):
                     #print("No signal. It's too far")
                     continue
                 else:
-                    intersecList.append(j+1)
+                    intersecList.append([j+1, 'speed'])
+                    #intersecDic[str(j+1)] = 'speed'
                     #print("Good")
         print(i+1, ":", intersecList)
+        #print(i + 1, ":", intersecDic)
 
 
 
