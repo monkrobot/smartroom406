@@ -31,12 +31,33 @@ def calcWifiDist(devices):
             if j == i:
                 continue
             else:
+                #if math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                #    devices[j].position[1] - devices[i].position[1]) ** 2) > devices[i].radius[-1]:
+                #    #print("No signal. It's too far")
+                #    continue
+                #else:
                 if math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
-                    devices[j].position[1] - devices[i].position[1]) ** 2) > devices[i].radius:
-                    #print("No signal. It's too far")
-                    continue
+                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[0]:
+                    intersecList.append([j+1, 72])
+                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[1]:
+                    intersecList.append([j+1, 54])
+                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[2]:
+                    intersecList.append([j + 1, 32])
+                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                    devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[3]:
+                    intersecList.append([j + 1, 11])
+                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                    devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[4]:
+                    intersecList.append([j + 1, 6])
+                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                    devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[5]:
+                    intersecList.append([j + 1, 1])
                 else:
-                    intersecList.append([j+1, 'speed'])
+                    continue
+
+
                     #intersecDic[str(j+1)] = 'speed'
                     #print("Good")
         print(i+1, ":", intersecList)

@@ -73,7 +73,8 @@ class Map(QWidget):
             print("Y is", pointPressY)
 
             #New device
-            dev = device.Device([pointPressX, pointPressY], Map.elHght_72)
+            radiusWiFi = [Map.elHght_72, Map.elHght_54, Map.elHght_32, Map.elHght_11, Map.elHght_6, Map.elHght_1]
+            dev = device.Device([pointPressX, pointPressY], radiusWiFi)
 
             #Device list
             Map.devList.append(dev)
