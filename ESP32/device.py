@@ -10,6 +10,11 @@ class Device:
     def __init__(self, position=[0,0], radius=0.1):
         self.position = position
         self.radius = radius
+        self.id
+        self.links = []
+    def addLink(id, speed):
+
+    def deleteLink(id):
 
 #Devices
 #wifirad =
