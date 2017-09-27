@@ -17,11 +17,9 @@ class Device:
     def deleteLink(self, id_del):
         for i in self.links:
             if id_del in i:
-                print("yes")
                 self.links.remove(i)
                 break
             else:
-                print('no')
                 continue
 
 #Devices
@@ -96,11 +94,11 @@ def calcWifiDist(devices):
 
 
 if __name__ == "__main__":
+    print("connections:")
     calcWifiDist(devices)
+    print(' ')
     for i in range(len(devices)):
         print("devLink for", i+1, devices[i].links)
-        print(' ')
         devices[i].deleteLink(2)
         print("devLink after delete for", i + 1, devices[i].links)
-        print(' ')
         print(' ')
