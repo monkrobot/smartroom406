@@ -64,7 +64,7 @@ class Map(QWidget):
             painter.setFont(QFont('Arial', 15))
             painter.drawText(point, str(Map.clickNum + 1))
 
-            print("ClickNum:", Map.clickNum)
+            print("ClickNum:", Map.clickNum + 1)
 
             #Mouse click coordinates
             pointPressX = point.x()
@@ -74,7 +74,7 @@ class Map(QWidget):
 
             #New device
             radiusWiFi = [Map.elHght_72, Map.elHght_54, Map.elHght_32, Map.elHght_11, Map.elHght_6, Map.elHght_1]
-            dev = device.Device([pointPressX, pointPressY], radiusWiFi)
+            dev = device.Device(Map.clickNum + 1, [pointPressX, pointPressY], radiusWiFi)
 
             #Device list
             Map.devList.append(dev)
