@@ -6,6 +6,24 @@ from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QWidget, QToolTip, QPus
 from PyQt5.QtGui import (QIcon, QFont, QPainter, QColor, QPen, QImage, QBrush)
 from PyQt5.QtCore import (QCoreApplication, Qt, QPoint)
 
+#ESP Wi-Fi radius for diff speeds
+espWidth_72 = [15, 15]
+espWidth_54 = [24, 24]
+espWidth_32 = [41, 41]
+espWidth_11 = [155, 155]
+espWidth_6 = [196, 196]
+espWidth_1 = [348, 348]
+espWidth_Cnt = [5, 5]
+
+#Router Wi-Fi radius for diff speeds
+rtrWidth = [300, 300]
+rtrCnt = [20, 20]
+
+width_stop = [0, 0]
+
+
+
+
 class Map(QWidget):
     def __init__(self):
         super().__init__()
@@ -180,13 +198,13 @@ class Map(QWidget):
         Function for button Router
         Changes size and color of router's wifi zone
         '''
-        Map.elHght_72, Map.elWdth_72 = 300, 300
+        Map.elHght_72, Map.elWdth_72 = rtrWidth
         #Map.elHght_54, Map.elWdth_54
         #Map.elHght_32, Map.elWdth_32
         #Map.elHght_11, Map.elWdth_11
         #Map.elHght_6, Map.elWdth_6
         #Map.elHght_1, Map.elWdth_1
-        Map.elCntH, Map.elCntW = 20, 20
+        Map.elCntH, Map.elCntW = rtrCnt
         Map.elClr = "#431292"
         print("Button Router pressed")
 
@@ -195,13 +213,13 @@ class Map(QWidget):
         Function for button ESP-32
         Changes size and color of esp's wifi zone
         '''
-        Map.elHght_72, Map.elWdth_72 = 15, 15
-        Map.elHght_54, Map.elWdth_54 = 24, 24
-        Map.elHght_32, Map.elWdth_32 = 41, 41
-        Map.elHght_11, Map.elWdth_11 = 155, 155
-        Map.elHght_6, Map.elWdth_6 = 196, 196
-        Map.elHght_1, Map.elWdth_1 = 348, 348
-        Map.elCntH, Map.elCntW = 5, 5
+        Map.elHght_72, Map.elWdth_72 = espWidth_72
+        Map.elHght_54, Map.elWdth_54 = espWidth_54
+        Map.elHght_32, Map.elWdth_32 = espWidth_32
+        Map.elHght_11, Map.elWdth_11 = espWidth_11
+        Map.elHght_6, Map.elWdth_6 = espWidth_6
+        Map.elHght_1, Map.elWdth_1 = espWidth_1
+        Map.elCntH, Map.elCntW = espWidth_Cnt
         Map.elClr = "#439232"
         print("Button ESP-32 pressed")
 
@@ -210,15 +228,14 @@ class Map(QWidget):
         Function for button Stop
         Changes size of wifi zone to 0
         '''
-        Map.elHght_72, Map.elWdth_72 = 0, 0
-        Map.elHght_54, Map.elWdth_54 = 0, 0
-        Map.elHght_32, Map.elWdth_32 = 0, 0
-        Map.elHght_11, Map.elWdth_11 = 0, 0
-        Map.elHght_6, Map.elWdth_6 = 0, 0
-        Map.elHght_1, Map.elWdth_1 = 0, 0
-        Map.elCntH, Map.elCntW = 0, 0
+        Map.elHght_72, Map.elWdth_72 = width_stop
+        Map.elHght_54, Map.elWdth_54 = width_stop
+        Map.elHght_32, Map.elWdth_32 = width_stop
+        Map.elHght_11, Map.elWdth_11 = width_stop
+        Map.elHght_6, Map.elWdth_6 = width_stop
+        Map.elHght_1, Map.elWdth_1 = width_stop
+        Map.elCntH, Map.elCntW = width_stop
         print("Button Stop pressed")
-        print("Fuck you!")
 
     def btnShwIntsClicked(self):
         print("Button Show intersections pressed")

@@ -1,9 +1,5 @@
 import math
 
-#radius of wifi signal
-type= {"router": [0.5], "esp": [0.1]}
-
-
 
 class Device:
     '''Class for devices: router and esp-32'''
@@ -36,7 +32,7 @@ dev7 = Device(3,[0,54], radiusWiFi)
 
 devices = [dev,dev2,dev3,dev4,dev5,dev6,dev7]
 
-
+speed = [72,54,32,11,6,1]
 #function for calculation radius and distance between two wifi points
 def calcWifiDist(devices):
     for i in range(len(devices)):
@@ -46,37 +42,41 @@ def calcWifiDist(devices):
             if j == i:
                 continue
             else:
+                for wifi_rad, wifi_speed in zip(devices[i].radius, speed):
+                    if math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                                devices[j].position[1] - devices[i].position[1]) ** 2) < wifi_rad:
+                        intersecList.append({j + 1: wifi_speed})
+                        devices[i].addLink(j + 1, wifi_speed)
+                        break
+                    else:
+                        continue
+
                 #if math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
-                #    devices[j].position[1] - devices[i].position[1]) ** 2) > devices[i].radius[-1]:
-                #    #print("No signal. It's too far")
-                #    continue
+                #            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[0]:
+                #    intersecList.append({j + 1: 72})
+                #    devices[i].addLink(j+1,72)
+                #elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                #            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[1]:
+                #    intersecList.append({j + 1: 54})
+                #    devices[i].addLink(j + 1, 54)
+                #elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                #            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[2]:
+                #    intersecList.append({j + 1: 32})
+                #    devices[i].addLink(j + 1, 32)
+                #elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                #            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[3]:
+                #    intersecList.append({j + 1: 11})
+                #    devices[i].addLink(j + 1, 11)
+                #elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                #            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[4]:
+                #    intersecList.append({j + 1: 6})
+                #    devices[i].addLink(j + 1, 6)
+                #elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
+                #            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[5]:
+                #    intersecList.append({j + 1: 1})
+                #    devices[i].addLink(j + 1, 1)
                 #else:
-                if math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
-                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[0]:
-                    intersecList.append({j + 1: 72})
-                    devices[i].addLink(j+1,72)
-                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
-                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[1]:
-                    intersecList.append({j + 1: 54})
-                    devices[i].addLink(j + 1, 54)
-                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
-                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[2]:
-                    intersecList.append({j + 1: 32})
-                    devices[i].addLink(j + 1, 32)
-                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
-                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[3]:
-                    intersecList.append({j + 1: 11})
-                    devices[i].addLink(j + 1, 11)
-                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
-                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[4]:
-                    intersecList.append({j + 1: 6})
-                    devices[i].addLink(j + 1, 6)
-                elif math.sqrt((devices[j].position[0] - devices[i].position[0]) ** 2 + (
-                            devices[j].position[1] - devices[i].position[1]) ** 2) < devices[i].radius[5]:
-                    intersecList.append({j + 1: 1})
-                    devices[i].addLink(j + 1, 1)
-                else:
-                    continue
+                #    continue
 
 
                     #intersecDic[str(j+1)] = 'speed'
