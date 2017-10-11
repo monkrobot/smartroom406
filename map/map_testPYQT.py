@@ -76,7 +76,7 @@ class Map(QWidget):
         painter.setBrush(QBrush(QColor("#324392"), Qt.CrossPattern))
         painter.drawEllipse(point, Map.elHght_1, Map.elWdth_1)
 
-        if Map.elHght_72 >= 10:
+        if Map.elHght_1 >= 10:
 
             painter.setPen(QPen(QColor("#000000")))
             painter.setFont(QFont('Arial', 15))

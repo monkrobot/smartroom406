@@ -6,14 +6,14 @@ from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QWidget, QToolTip, QPus
 from PyQt5.QtGui import (QIcon, QFont, QPainter, QColor, QPen, QImage, QBrush)
 from PyQt5.QtCore import (QCoreApplication, Qt, QPoint)
 
-#ESP Wi-Fi radius for diff speeds
-espWidth_72 = [15, 15]
-espWidth_54 = [24, 24]
-espWidth_32 = [41, 41]
-espWidth_11 = [155, 155]
-espWidth_6 = [196, 196]
-espWidth_1 = [348, 348]
-espWidth_Cnt = [5, 5]
+#ESP Bluetooth radius for diff speeds
+bltWidth_72 = [0, 0]
+bltWidth_54 = [0, 0]
+bltWidth_32 = [0, 0]
+bltWidth_11 = [25, 25]
+bltWidth_6 = [50, 50]
+bltWidth_1 = [100, 100]
+bltWidth_Cnt = [1, 1]
 
 #Router Wi-Fi radius for diff speeds
 rtrWidth = [300, 300]
@@ -39,8 +39,11 @@ class Map(QWidget):
     elHght_6, elWdth_6 = 0, 0
     elHght_1, elWdth_1 = 0, 0
     elCntH, elCntW = 0, 0 #Mouse click WiFi zone center
+
     clickNum = 0 #Number of mouse click for device
+
     devList = [] #Device list
+
     elClr = "#000000"
 
     def mousePressEvent(self, event):
@@ -76,7 +79,7 @@ class Map(QWidget):
         painter.setBrush(QBrush(QColor("#324392"), Qt.CrossPattern))
         painter.drawEllipse(point, Map.elHght_1, Map.elWdth_1)
 
-        if Map.elHght_72 >= 10:
+        if Map.elHght_1 >= 10:
 
             painter.setPen(QPen(QColor("#000000")))
             painter.setFont(QFont('Arial', 15))
@@ -91,8 +94,8 @@ class Map(QWidget):
             print("Y is", pointPressY)
 
             #New device
-            radiusWiFi = [Map.elHght_72, Map.elHght_54, Map.elHght_32, Map.elHght_11, Map.elHght_6, Map.elHght_1]
-            dev = device.Device(Map.clickNum + 1, [pointPressX, pointPressY], radiusWiFi)
+            radiusBlt = [Map.elHght_72, Map.elHght_54, Map.elHght_32, Map.elHght_11, Map.elHght_6, Map.elHght_1]
+            dev = device.Device(Map.clickNum + 1, [pointPressX, pointPressY], radiusBlt)
 
             #Device list
             Map.devList.append(dev)
@@ -120,7 +123,7 @@ class Map(QWidget):
         btnRout = QPushButton("Router", self)
         btnRout.move(30, 50)
 
-        btnESP = QPushButton("ESP-32", self)
+        btnESP = QPushButton("Bluetooth", self)
         btnESP.move(160, 50)
 
         btnStp = QPushButton("Stop", self)
@@ -213,15 +216,15 @@ class Map(QWidget):
         Function for button ESP-32
         Changes size and color of esp's wifi zone
         '''
-        Map.elHght_72, Map.elWdth_72 = espWidth_72
-        Map.elHght_54, Map.elWdth_54 = espWidth_54
-        Map.elHght_32, Map.elWdth_32 = espWidth_32
-        Map.elHght_11, Map.elWdth_11 = espWidth_11
-        Map.elHght_6, Map.elWdth_6 = espWidth_6
-        Map.elHght_1, Map.elWdth_1 = espWidth_1
-        Map.elCntH, Map.elCntW = espWidth_Cnt
+        Map.elHght_72, Map.elWdth_72 = bltWidth_72
+        Map.elHght_54, Map.elWdth_54 = bltWidth_54
+        Map.elHght_32, Map.elWdth_32 = bltWidth_32
+        Map.elHght_11, Map.elWdth_11 = bltWidth_11
+        Map.elHght_6, Map.elWdth_6 = bltWidth_6
+        Map.elHght_1, Map.elWdth_1 = bltWidth_1
+        Map.elCntH, Map.elCntW = bltWidth_Cnt
         Map.elClr = "#439232"
-        print("Button ESP-32 pressed")
+        print("Button Bluetooth pressed")
 
     def btnStopClicked(self):
         '''
