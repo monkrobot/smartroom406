@@ -21,7 +21,8 @@ rtrCnt = [20, 20]
 
 width_stop = [0, 0]
 
-
+#Wi-Fi speed
+wifi_speed = [72,54,32,11,6,1]
 
 
 class Map(QWidget):
@@ -240,7 +241,8 @@ class Map(QWidget):
     def btnShwIntsClicked(self):
         print("Button Show intersections pressed")
         if Map.clickNum >= 1:
-            device.calcWifiDist(Map.devList)
+            speed = wifi_speed
+            device.calcWifiDist(Map.devList, wifi_speed)
 
 if __name__ == '__main__':
 

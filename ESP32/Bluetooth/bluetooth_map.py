@@ -10,9 +10,9 @@ from PyQt5.QtCore import (QCoreApplication, Qt, QPoint)
 bltWidth_72 = [0, 0]
 bltWidth_54 = [0, 0]
 bltWidth_32 = [0, 0]
-bltWidth_11 = [25, 25]
-bltWidth_6 = [50, 50]
-bltWidth_1 = [100, 100]
+bltWidth_11 = [0, 0]
+bltWidth_3 = [9, 9]
+bltWidth_2 = [46, 46]
 bltWidth_Cnt = [1, 1]
 
 #Router Wi-Fi radius for diff speeds
@@ -21,7 +21,8 @@ rtrCnt = [20, 20]
 
 width_stop = [0, 0]
 
-
+#Bluetooth speed
+bluetooth_speed = [72,54,32,11,3,2]
 
 
 class Map(QWidget):
@@ -36,8 +37,8 @@ class Map(QWidget):
     elHght_54, elWdth_54 = 0, 0
     elHght_32, elWdth_32 = 0, 0
     elHght_11, elWdth_11 = 0, 0
-    elHght_6, elWdth_6 = 0, 0
-    elHght_1, elWdth_1 = 0, 0
+    elHght_3, elWdth_3 = 0, 0
+    elHght_2, elWdth_2 = 0, 0
     elCntH, elCntW = 0, 0 #Mouse click WiFi zone center
 
     clickNum = 0 #Number of mouse click for device
@@ -73,13 +74,13 @@ class Map(QWidget):
 
         painter.setPen(QPen(QColor("#324392"), 2, Qt.SolidLine, Qt.RoundCap))
         painter.setBrush(QBrush(QColor("#324392"), Qt.CrossPattern))
-        painter.drawEllipse(point, Map.elHght_6, Map.elWdth_6)
+        painter.drawEllipse(point, Map.elHght_3, Map.elWdth_3)
 
         painter.setPen(QPen(QColor("#324392"), 2, Qt.SolidLine, Qt.RoundCap))
         painter.setBrush(QBrush(QColor("#324392"), Qt.CrossPattern))
-        painter.drawEllipse(point, Map.elHght_1, Map.elWdth_1)
+        painter.drawEllipse(point, Map.elHght_2, Map.elWdth_2)
 
-        if Map.elHght_1 >= 10:
+        if Map.elHght_2 >= 10:
 
             painter.setPen(QPen(QColor("#000000")))
             painter.setFont(QFont('Arial', 15))
@@ -94,7 +95,7 @@ class Map(QWidget):
             print("Y is", pointPressY)
 
             #New device
-            radiusBlt = [Map.elHght_72, Map.elHght_54, Map.elHght_32, Map.elHght_11, Map.elHght_6, Map.elHght_1]
+            radiusBlt = [Map.elHght_72, Map.elHght_54, Map.elHght_32, Map.elHght_11, Map.elHght_3, Map.elHght_2]
             dev = device.Device(Map.clickNum + 1, [pointPressX, pointPressY], radiusBlt)
 
             #Device list
@@ -123,8 +124,8 @@ class Map(QWidget):
         btnRout = QPushButton("Router", self)
         btnRout.move(30, 50)
 
-        btnESP = QPushButton("Bluetooth", self)
-        btnESP.move(160, 50)
+        btnBlt = QPushButton("Bluetooth", self)
+        btnBlt.move(160, 50)
 
         btnStp = QPushButton("Stop", self)
         btnStp.move(290, 50)
@@ -135,7 +136,7 @@ class Map(QWidget):
         btnShwInts.move(420, 50)
 
         btnRout.clicked.connect(self.btnRoutnClicked)
-        btnESP.clicked.connect(self.btnESPClicked)
+        btnBlt.clicked.connect(self.btnBltClicked)
         btnStp.clicked.connect(self.btnStopClicked)
         btnShwInts.clicked.connect(self.btnShwIntsClicked)
 
@@ -147,48 +148,6 @@ class Map(QWidget):
         painterRect = QPainter(self._im)
         painterRect.setPen(QPen(QColor("#000"), 1, Qt.SolidLine, Qt.RoundCap))
         painterRect.drawRect(100, 100, 100, 800)
-
-        ##History
-#
-        ## Size and color for drawing zone
-        #self._in = QImage(1700, 960, QImage.Format_ARGB32)
-        #self._in.fill(QColor("red"))
-        #
-        ##Color for speed 72Mbps
-        #history = QPainter(self._in)
-        #history.setPen(QPen(QColor("#439232"), 1, Qt.SolidLine, Qt.RoundCap))
-        ##history_72.setBrush(QBrush(QColor("#439232"), Qt.CrossPattern))
-        #history.drawRect(400, 100, 100, 800)
-#
-        ## Color for speed 54Mbps
-        #history_54 = QPainter(self._im)
-        #history_54.setPen(QPen(QColor("#923243"), 1, Qt.SolidLine, Qt.RoundCap))
-        #history_54.setBrush(QBrush(QColor("#923243"), Qt.CrossPattern))
-        #history_54.drawRect(50, 150, 50, 50)
-#
-        ## Color for speed 32Mbps
-        #history_32 = QPainter(self._im)
-        #history_32.setPen(QPen(QColor("#324392"), 1, Qt.SolidLine, Qt.RoundCap))
-        #history_32.setBrush(QBrush(QColor("#324392"), Qt.CrossPattern))
-        #history_32.drawRect(50, 200, 50, 50)
-#
-        ## Color for speed 11Mbps
-        #history_11 = QPainter(self._im)
-        #history_11.setPen(QPen(QColor("#000"), 1, Qt.SolidLine, Qt.RoundCap))
-        #history_11.setBrush(QBrush(QColor("#000"), Qt.CrossPattern))
-        #history_11.drawRect(50, 250, 50, 50)
-#
-        ## Color for speed 6Mbps
-        #history_6 = QPainter(self._im)
-        #history_6.setPen(QPen(QColor("#000"), 1, Qt.SolidLine, Qt.RoundCap))
-        #history_6.setBrush(QBrush(QColor("#000"), Qt.CrossPattern))
-        #history_6.drawRect(50, 300, 50, 50)
-#
-        ## Color for speed 1Mbps
-        #history_1 = QPainter(self._im)
-        #history_1.setPen(QPen(QColor("#000"), 1, Qt.SolidLine, Qt.RoundCap))
-        #history_1.setBrush(QBrush(QColor("#000"), Qt.CrossPattern))
-        #history_1.drawRect(50, 350, 50, 50)
 
         #Size and Title for program window
         self.setFixedSize(1700, 960)
@@ -211,17 +170,17 @@ class Map(QWidget):
         Map.elClr = "#431292"
         print("Button Router pressed")
 
-    def btnESPClicked(self):
+    def btnBltClicked(self):
         '''
-        Function for button ESP-32
-        Changes size and color of esp's wifi zone
+        Function for button Bluetooth
+        Changes size and color of esp's bluetooth zone
         '''
         Map.elHght_72, Map.elWdth_72 = bltWidth_72
         Map.elHght_54, Map.elWdth_54 = bltWidth_54
         Map.elHght_32, Map.elWdth_32 = bltWidth_32
         Map.elHght_11, Map.elWdth_11 = bltWidth_11
-        Map.elHght_6, Map.elWdth_6 = bltWidth_6
-        Map.elHght_1, Map.elWdth_1 = bltWidth_1
+        Map.elHght_3, Map.elWdth_3 = bltWidth_3
+        Map.elHght_2, Map.elWdth_2 = bltWidth_2
         Map.elCntH, Map.elCntW = bltWidth_Cnt
         Map.elClr = "#439232"
         print("Button Bluetooth pressed")
@@ -229,21 +188,22 @@ class Map(QWidget):
     def btnStopClicked(self):
         '''
         Function for button Stop
-        Changes size of wifi zone to 0
+        Changes size of bluetooth zone to 0
         '''
         Map.elHght_72, Map.elWdth_72 = width_stop
         Map.elHght_54, Map.elWdth_54 = width_stop
         Map.elHght_32, Map.elWdth_32 = width_stop
         Map.elHght_11, Map.elWdth_11 = width_stop
-        Map.elHght_6, Map.elWdth_6 = width_stop
-        Map.elHght_1, Map.elWdth_1 = width_stop
+        Map.elHght_3, Map.elWdth_3 = width_stop
+        Map.elHght_2, Map.elWdth_2 = width_stop
         Map.elCntH, Map.elCntW = width_stop
         print("Button Stop pressed")
 
     def btnShwIntsClicked(self):
         print("Button Show intersections pressed")
         if Map.clickNum >= 1:
-            device.calcWifiDist(Map.devList)
+            speed = bluetooth_speed
+            device.calcWifiDist(Map.devList, bluetooth_speed)
 
 if __name__ == '__main__':
 

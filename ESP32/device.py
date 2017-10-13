@@ -34,7 +34,7 @@ devices = [dev,dev2,dev3,dev4,dev5,dev6,dev7]
 
 speed = [72,54,32,11,6,1]
 #function for calculation radius and distance between two wifi points
-def calcWifiDist(devices):
+def calcWifiDist(devices, speed):
     for i in range(len(devices)):
         intersecList = []
         #intersecDic = {}
@@ -95,7 +95,7 @@ def calcWifiDist(devices):
 
 if __name__ == "__main__":
     print("connections:")
-    calcWifiDist(devices)
+    calcWifiDist(devices, speed)
     print(' ')
     for i in range(len(devices)):
         print("devLink for", i+1, devices[i].links)
