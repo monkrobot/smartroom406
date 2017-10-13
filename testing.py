@@ -36,15 +36,23 @@ list1 = [{1: 's'}, {2: "sld"}, {3: 'd'}]
 #y = list1.index({2: "sld"})
 #y = list1.remove({2: "sld"})
 #print(y)
-print(list1)
-id_del = 4
-for i in list1:
-    if id_del in i:
-        print("yes")
-        list1.remove(i)
-        break
-    else:
-        print('no')
-        continue
+#print(list1)
+#id_del = 4
+#for i in list1:
+#    if id_del in i:
+#        print("yes")
+#        list1.remove(i)
+#        break
+#    else:
+#        print('no')
+#        continue
+#
+#print(list1)
+num = 14+1j
+print(type(num))
+print(2.3 // 2)
+print(num.imag)
 
-print(list1)
+x = 23
+y = 'boo'
+print(x and y)
