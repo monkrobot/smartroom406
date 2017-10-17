@@ -7,12 +7,12 @@ from PyQt5.QtGui import (QIcon, QFont, QPainter, QColor, QPen, QImage, QBrush)
 from PyQt5.QtCore import (QCoreApplication, Qt, QPoint)
 
 #ESP Wi-Fi radius for diff speeds
-espWidth_72 = [15, 15]
-espWidth_54 = [24, 24]
-espWidth_32 = [41, 41]
-espWidth_11 = [155, 155]
-espWidth_6 = [196, 196]
-espWidth_1 = [348, 348]
+espWidth_72 = [22, 22]
+espWidth_54 = [34, 34]
+espWidth_32 = [58.5, 58.5]
+espWidth_11 = [220, 220]
+espWidth_6 = [277, 277]
+espWidth_1 = [492, 492]
 espWidth_Cnt = [5, 5]
 
 #Router Wi-Fi radius for diff speeds

@@ -11,8 +11,8 @@ bltWidth_72 = [0, 0]
 bltWidth_54 = [0, 0]
 bltWidth_32 = [0, 0]
 bltWidth_11 = [0, 0]
-bltWidth_3 = [9, 9]
-bltWidth_2 = [46, 46]
+bltWidth_3 = [23, 23]
+bltWidth_2 = [116, 116]
 bltWidth_Cnt = [1, 1]
 
 #Router Wi-Fi radius for diff speeds

@@ -32,7 +32,7 @@
 #xz = func123(x)
 
 
-list1 = [{1: 's'}, {2: "sld"}, {3: 'd'}]
+#list1 = [{1: 's'}, {2: "sld"}, {3: 'd'}]
 #y = list1.index({2: "sld"})
 #y = list1.remove({2: "sld"})
 #print(y)
@@ -48,11 +48,7 @@ list1 = [{1: 's'}, {2: "sld"}, {3: 'd'}]
 #        continue
 #
 #print(list1)
-num = 14+1j
-print(type(num))
-print(2.3 // 2)
-print(num.imag)
-
-x = 23
-y = 'boo'
-print(x and y)
+x = 0
+y = 12
+name = x or y
+print(name)
